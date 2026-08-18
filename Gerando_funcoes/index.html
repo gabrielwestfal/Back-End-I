@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Previsão do Tempo</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Previsão do Tempo</h1>
+
+        <input type="text" id="cidade" placeholder="Digite uma cidade">
+        <button id="btnPesquisar">Pesquisar</button>
+    </header>
+
+    <main>
+
+        <section class="tempo-atual">
+
+            <h2 id="nomeCidade">Digite uma cidade</h2>
+
+            <div class="temperatura">
+                <span id="iconeAtual">🌤️</span>
+                <strong id="temperaturaAtual">--°C</strong>
+            </div>
+
+            <p id="descricaoAtual">Pesquise uma cidade para ver a previsão</p>
+
+            <p>
+                Máxima: <span id="maxima">--</span> |
+                Mínima: <span id="minima">--</span>
+            </p>
+
+        </section>
+
+
+        <section class="previsao">
+
+            <h2>Previsão para os próximos dias</h2>
+
+            <div class="dias" id="dias">
+
+                <!-- Os dias serão criados pelo JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Site de previsão do tempo</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

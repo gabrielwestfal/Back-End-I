@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eaf4ff;
+    color: #222;
+}
+
+header {
+    background: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin-bottom: 20px;
+}
+
+header input {
+    padding: 12px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+}
+
+header button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #1565c0;
+    color: white;
+    cursor: pointer;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.tempo-atual {
+    background: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.temperatura {
+    margin: 20px;
+}
+
+.temperatura span {
+    font-size: 50px;
+}
+
+.temperatura strong {
+    font-size: 50px;
+    margin-left: 15px;
+}
+
+.tempo-atual p {
+    margin: 10px;
+}
+
+.previsao {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.previsao h2 {
+    margin-bottom: 20px;
+}
+
+.dias {
+    display: flex;
+    gap: 15px;
+}
+
+.dia {
+    flex: 1;
+    text-align: center;
+    background: #f2f8ff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.dia span {
+    display: block;
+    font-size: 35px;
+    margin: 15px 0;
+}
+
+.dia p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+}

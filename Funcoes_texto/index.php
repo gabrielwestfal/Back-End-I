@@ -1,37 +1,37 @@
+
 <?php
-function criarHeader($tituloPagina, $titulo){
-    $header ='<!DOCTYPE html>
-<html lang="pt-br">
+require_once "funcoes.php";
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Previsão do Tempo</title>
+
     <link rel="stylesheet" href="style.css">
-    <title>'.$tituloPagina.'</title>
 </head>
+
 <body>
-    <header><h1>'.$titulo.'</h1></header>';
-
-    return $header;
-};
-
-function criarMain ($estado, $cidade){
-    $main = '
+    <?php
+    criarHeader();
+    ?>
     <main>
-    <h2> Hoje no '.$estado.' em '.$cidade.' choveu muito</h2>
-    <a href="cidade.php">Clique aqui para mais informações de '.$cidade.'</a>
+
+        <?php
+        criarPesquisa();
+        criarPrevisao();
+        ?>
     </main>
-    ' ;
-    return $main;
-};
-
-function criarFooter ($data){
-    $footer =  '<footer>'.$data.'</footer>
+    <?php
+    criarFooter();
+    ?>
 </body>
-</html>';
-return $footer;
-};
-echo criarHeader('Tempo', 'Previsão do tempo');
-echo criarMain('Espírito santo', 'Santa Teresa');
-echo criarFooter('Dia 18/08/2026');
-
-?>
+</html>

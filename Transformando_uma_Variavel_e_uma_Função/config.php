@@ -35,8 +35,8 @@ function criarMenu($logado = false){
                 '.criarLinkMenu("index.php", 'home-outline', "Início").'   
                         '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'     
                         '.criarLinkMenu("login.php", 'lock-closed-outline', "Acessar").'                        
-                        '.criarLinkMenu("devs.php", 'bug-outline', "Desenvolvedores").'                         
-                        '.criarLinkMenu("contato.php", 'paper-plane-outline', "Contato").'  
+                        '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
+                        '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'  
                         </nav>';
             }
            return $menu;

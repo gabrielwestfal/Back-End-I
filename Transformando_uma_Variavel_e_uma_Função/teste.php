@@ -9,7 +9,7 @@ function verificarLogin($nome, $senha) {
 if($nome == 'gabriel' && $senha == '123'){
     return "Parabens vc esta logado";
 }else {
-    return "Essa conta não existe!!!!";
+    return "Login ou senha incorretos";
 };
 };
  echo verificarLogin($nome, $senha)

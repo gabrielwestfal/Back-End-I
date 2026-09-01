@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 print_r($_POST);
 
@@ -7,9 +8,12 @@ $senha = $_POST['senha'];
 
 function verificarLogin($nome, $senha) {
 if($nome == 'gabriel' && $senha == '123'){
-    return "Parabens vc esta logado";
+    echo "Login realizado com sucesso!";
+    $_SESSION['logado'] = 1;
+    $_SESSION['nome'] = $nome;
 }else {
-    return "Login ou senha incorretos";
+    echo "Login ou senha incorretos";
+    $_SESSION['logado'] = 0;
 };
 };
  echo verificarLogin($nome, $senha)

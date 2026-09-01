@@ -2,8 +2,9 @@
 include 'config.php';
 
 criarTopo('IFES - Google');
+echo criarPesquisa("https://www.google.com/search", "Google", "q");
 ?>
-<main>
+<!-- <main>
     <form  class="formulario" action="https://www.google.com/search" method="GET">
             <h1>Google</h1>
             <p>Faça sua pesquisa abaixo</p>
@@ -18,7 +19,7 @@ criarTopo('IFES - Google');
                             <button><ion-icon name="search-outline"></ion-icon> Buscar</button>
                         </div> 
         </form>      
-</main>
+</main> -->
 
 <?php
 echo $rodape;

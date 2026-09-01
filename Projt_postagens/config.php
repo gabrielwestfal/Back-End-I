@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function criarTopo($titulo){
 
 $topo =    '<!DOCTYPE html>
@@ -17,18 +17,20 @@ $topo =    '<!DOCTYPE html>
             <img src="img/logo.png">
             <h1>'.$titulo.'</h1>
         </div>
-           '.criarMenu().'
+           '.criarMenu($_SESSION["logado"]).'
     </header>';
     echo $topo;
     
 };
-function criarMenu($logado = false){
+function criarMenu($logado){
             $menu = "";
-            if($logado){
+            if($logado == 1){
                 $menu = '<nav>
                         '.criarLinkMenu("perfil.php", 'person-outline', "Perfil").'            
                         '.criarLinkMenu("posts.php", 'add-outline', "Cadastrar Postagem").'    
-                        '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'        
+                        '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'
+                        '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
+                        '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'        
                         </nav>';
             }else{
                 $menu = '<nav>
@@ -40,7 +42,8 @@ function criarMenu($logado = false){
                         </nav>';
             }
            return $menu;
-}         
+}
+  
 
 
 $rodape = ' <footer class="dflex-center">
@@ -70,5 +73,26 @@ $rodape = ' <footer class="dflex-center">
         return $html;
     };
 
+    function criarPesquisa($action, $titulo, $name){
+        $pesquisa = '
+        <main>
+          <form  class="formulario" action='.$action.' method="GET">
+            <h1>'.$titulo.'</h1>
+            <p>Faça sua pesquisa abaixo</p>
+                        <div class="campo">
+                            <input
+                                type="text"
+                                id="pesquisa"
+                                name="'.$name.'"
+                                placeholder="Digite a sua pesquisa"
+                                required
+                            >
+                            <button><ion-icon name="search-outline"></ion-icon> Buscar</button>
+                        </div> 
+            </form>
+        </main>
+    ';
+    return $pesquisa;
+};
    
 ?>

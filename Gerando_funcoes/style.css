@@ -1,109 +1,1248 @@
+
+/* =========================================================
+   CONFIGURAÇÕES
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #eaf4ff;
-    color: #222;
+:root {
+
+    --azul: #2196f3;
+    --azul-escuro: #0d47a1;
+    --azul-claro: #64b5f6;
+
+    --fundo: #eef7ff;
+    --branco: #ffffff;
+
+    --texto: #17202a;
+    --texto-claro: #718096;
+
+    --verde: #20b486;
+    --amarelo: #ffb703;
+
+    --sombra:
+        0 15px 40px rgba(30, 90, 140, 0.12);
+
+    --transicao: 0.3s ease;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--texto);
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f5ff,
+            #f8fbff
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   FUNDO
+========================================================= */
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.cloud {
+
+    position: absolute;
+
+    font-size: 100px;
+
+    opacity: 0.12;
+
+    filter: blur(1px);
+
+    animation:
+        moverNuvem 25s linear infinite;
+}
+
+.cloud-1 {
+    top: 15%;
+    left: -150px;
+}
+
+.cloud-2 {
+
+    top: 55%;
+
+    left: -300px;
+
+    font-size: 160px;
+
+    animation-duration: 35s;
+}
+
+.cloud-3 {
+
+    top: 75%;
+
+    left: -200px;
+
+    font-size: 70px;
+
+    animation-duration: 20s;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header {
-    background: #2196f3;
-    color: white;
+
+    position: relative;
+
+    padding: 55px 20px 70px;
+
     text-align: center;
-    padding: 30px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d47a1,
+            #1976d2,
+            #42a5f5
+        );
+
+    overflow: hidden;
 }
 
-header h1 {
+header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: -350px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    right: -200px;
+    bottom: -350px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    z-index: 2;
+}
+
+.logo span {
+
+    font-size: 42px;
+
+    animation:
+        flutuar 3s ease-in-out infinite;
+}
+
+.logo h1 {
+
+    font-size: 42px;
+
+    letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   SUBTÍTULO
+========================================================= */
+
+.subtitulo {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 8px;
+
+    opacity: 0.85;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   PESQUISA
+========================================================= */
+
+.pesquisa {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(650px, 100%);
+
+    margin: 35px auto 15px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.input-container {
+
+    flex: 1;
+
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 18px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15);
+
+    transition: var(--transicao);
+}
+
+.input-container:focus-within {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+}
+
+.input-container span {
+
+    font-size: 20px;
+}
+
+.input-container input {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 16px;
+
+    color: var(--texto);
+}
+
+.pesquisa button {
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: var(--azul-escuro);
+
+    font-weight: bold;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: var(--transicao);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15);
+}
+
+.pesquisa button:hover {
+
+    transform: translateY(-4px);
+
+    background: #e3f2fd;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.2);
+}
+
+.pesquisa button:active {
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 13px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+
+    width: min(1100px, 92%);
+
+    margin: -30px auto 60px;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   LOCALIZAÇÃO
+========================================================= */
+
+.localizacao {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 25px 30px;
+
+    background: rgba(255,255,255,0.9);
+
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+
+    box-shadow: var(--sombra);
+
     margin-bottom: 20px;
 }
 
-header input {
-    padding: 12px;
-    width: 250px;
-    border: none;
-    border-radius: 5px;
+.localizacao > div:first-child {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
 }
 
-header button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    background: #1565c0;
+.pin {
+
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #e3f2fd;
+
+    font-size: 24px;
+}
+
+.localizacao p {
+
+    color: var(--texto-claro);
+
+    font-size: 13px;
+}
+
+.localizacao h2 {
+
+    font-size: 25px;
+
+    color: var(--azul-escuro);
+}
+
+.data-hora {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+}
+
+.data-hora strong {
+
+    font-size: 25px;
+
+    color: var(--texto);
+}
+
+.data-hora span {
+
+    color: var(--texto-claro);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   CLIMA PRINCIPAL
+========================================================= */
+
+.clima-principal {
+
+    min-height: 340px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 50px;
+
     color: white;
-    cursor: pointer;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1565c0,
+            #2196f3,
+            #64b5f6
+        );
+
+    box-shadow:
+        0 25px 60px rgba(25,118,210,0.3);
+
+    overflow: hidden;
+
+    position: relative;
 }
 
-main {
-    width: 90%;
-    max-width: 900px;
-    margin: 30px auto;
+
+/* brilho */
+
+.clima-principal::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 400px;
+
+    right: -150px;
+    top: -200px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.12);
 }
 
-.tempo-atual {
-    background: white;
-    text-align: center;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
+
+/* =========================================================
+   INFORMAÇÕES
+========================================================= */
+
+.clima-info {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.badge {
+
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 12px;
+}
+
+.clima-info h3 {
+
+    font-size: 22px;
+
+    font-weight: normal;
+
+    text-transform: capitalize;
+
+    margin-bottom: 5px;
 }
 
 .temperatura {
-    margin: 20px;
-}
 
-.temperatura span {
-    font-size: 50px;
+    display: flex;
+
+    align-items: flex-start;
+
+    margin: 10px 0 20px;
 }
 
 .temperatura strong {
-    font-size: 50px;
-    margin-left: 15px;
+
+    font-size: 90px;
+
+    line-height: 0.9;
+
+    letter-spacing: -6px;
 }
 
-.tempo-atual p {
-    margin: 10px;
+.temperatura span {
+
+    font-size: 30px;
+
+    margin-top: 5px;
 }
+
+
+/* =========================================================
+   MÁXIMA / MÍNIMA
+========================================================= */
+
+.temperaturas {
+
+    display: flex;
+
+    gap: 30px;
+}
+
+.temperaturas div {
+
+    display: grid;
+
+    grid-template-columns: auto auto;
+
+    column-gap: 7px;
+}
+
+.temperaturas span {
+
+    grid-row: span 2;
+
+    font-size: 22px;
+}
+
+.temperaturas p {
+
+    font-size: 12px;
+
+    opacity: 0.7;
+}
+
+.temperaturas strong {
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   ÍCONE
+========================================================= */
+
+.icone-clima {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding-right: 40px;
+}
+
+.circulo-clima {
+
+    width: 220px;
+    height: 220px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.15);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        inset 0 0 40px rgba(255,255,255,0.08),
+        0 20px 50px rgba(0,0,0,0.1);
+
+    animation:
+        flutuar 4s ease-in-out infinite;
+}
+
+.circulo-clima span {
+
+    font-size: 115px;
+
+    filter:
+        drop-shadow(
+            0 10px 15px rgba(0,0,0,0.15)
+        );
+}
+
+
+/* =========================================================
+   INDICADORES
+========================================================= */
+
+.indicadores {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 20px 0;
+}
+
+.indicador {
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: var(--sombra);
+
+    transition: var(--transicao);
+}
+
+.indicador:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 20px 40px rgba(30,90,140,0.15);
+}
+
+.indicador-icon {
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+
+    background: #e3f2fd;
+
+    font-size: 22px;
+}
+
+.indicador span {
+
+    display: block;
+
+    color: var(--texto-claro);
+
+    font-size: 12px;
+}
+
+.indicador strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--texto);
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   PREVISÃO
+========================================================= */
 
 .previsao {
+
+    padding: 30px;
+
     background: white;
-    padding: 25px;
-    border-radius: 10px;
+
+    border-radius: 22px;
+
+    box-shadow: var(--sombra);
 }
 
-.previsao h2 {
-    margin-bottom: 20px;
+.titulo-secao {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
 }
+
+.titulo-secao span {
+
+    color: var(--azul);
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.titulo-secao h2 {
+
+    font-size: 28px;
+
+    color: var(--texto);
+}
+
+.titulo-secao button {
+
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #e3f2fd;
+
+    color: var(--azul-escuro);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: var(--transicao);
+}
+
+.titulo-secao button:hover {
+
+    background: var(--azul);
+
+    color: white;
+}
+
+
+/* =========================================================
+   CARDS DOS DIAS
+========================================================= */
 
 .dias {
-    display: flex;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
     gap: 15px;
 }
 
 .dia {
-    flex: 1;
+
+    padding: 25px 15px;
+
     text-align: center;
-    background: #f2f8ff;
-    padding: 20px;
-    border-radius: 8px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8fbff,
+            #edf6ff
+        );
+
+    border: 1px solid #e6f1fa;
+
+    cursor: pointer;
+
+    transition: var(--transicao);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.dia::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2196f3,
+            #64b5f6
+        );
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: var(--transicao);
+}
+
+.dia:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    background: white;
+
+    box-shadow:
+        0 15px 30px rgba(30,90,140,0.12);
+}
+
+.dia:hover::before {
+
+    transform: scaleX(1);
 }
 
 .dia span {
+
     display: block;
-    font-size: 35px;
+
     margin: 15px 0;
+
+    font-size: 45px;
+
+    transition: var(--transicao);
+}
+
+.dia:hover span {
+
+    transform:
+        scale(1.2)
+        rotate(5deg);
 }
 
 .dia p {
-    font-size: 20px;
+
     font-weight: bold;
+
+    color: var(--texto);
 }
 
+.dia .temperaturas-dia {
+
+    margin-top: 10px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.max {
+
+    color: #e65100;
+}
+
+.min {
+
+    color: #1976d2;
+}
+
+
+/* =========================================================
+   SKELETON / CARREGAMENTO
+========================================================= */
+
+.skeleton {
+
+    width: 60px;
+    height: 60px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e9f2f8,
+            #f8fcff,
+            #e9f2f8
+        );
+
+    background-size: 200%;
+
+    animation:
+        skeleton 1.5s infinite;
+}
+
+.skeleton.pequeno {
+
+    width: 80px;
+    height: 15px;
+
+    margin: 10px auto;
+}
+
+.skeleton.medio {
+
+    width: 50px;
+    height: 15px;
+
+    margin: 10px auto;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 footer {
+
+    padding: 45px 20px;
+
     text-align: center;
-    margin-top: 30px;
-    padding: 20px;
+
+    background: #102a43;
+
+    color: white;
+}
+
+.footer-logo {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+footer p {
+
+    color: #b8c7d4;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+footer span {
+
+    color: #78909c;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+
+@keyframes flutuar {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes moverNuvem {
+
+    from {
+        transform: translateX(-200px);
+    }
+
+    to {
+        transform: translateX(120vw);
+    }
+}
+
+@keyframes skeleton {
+
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .dias {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .indicadores {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .clima-principal {
+
+        padding: 40px;
+    }
+
+    .circulo-clima {
+
+        width: 170px;
+        height: 170px;
+    }
+
+    .circulo-clima span {
+
+        font-size: 90px;
+    }
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 650px) {
+
+    header {
+
+        padding:
+            40px 15px 65px;
+    }
+
+    .logo h1 {
+
+        font-size: 34px;
+    }
+
+    .pesquisa {
+
+        flex-direction: column;
+    }
+
+    .pesquisa button {
+
+        height: 52px;
+    }
+
+    main {
+
+        width: 94%;
+    }
+
+    .localizacao {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .data-hora {
+
+        align-items: flex-start;
+    }
+
+    .clima-principal {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        padding: 40px 20px;
+    }
+
+    .temperatura {
+
+        justify-content: center;
+    }
+
+    .temperaturas {
+
+        justify-content: center;
+    }
+
+    .icone-clima {
+
+        padding: 20px 0 0;
+    }
+
+    .circulo-clima {
+
+        width: 150px;
+        height: 150px;
+    }
+
+    .circulo-clima span {
+
+        font-size: 80px;
+    }
+
+    .indicadores {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .dias {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .dia {
+
+        min-height: 170px;
+    }
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .indicadores {
+
+        grid-template-columns: 1fr;
+    }
+
+    .temperatura strong {
+
+        font-size: 70px;
+    }
+
+    .titulo-secao h2 {
+
+        font-size: 23px;
+    }
+
+    .previsao {
+
+        padding: 20px 15px;
+    }
 }

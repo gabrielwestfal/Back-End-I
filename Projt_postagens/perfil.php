@@ -1,7 +1,8 @@
 <?php
 include 'config.php';
 
-$logado = $_SESSION["logado"];
+$logado = @$_SESSION["logado"];
+
 echo $logado;
 
 criarTopo($logado);

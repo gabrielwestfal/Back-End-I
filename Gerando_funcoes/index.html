@@ -5,48 +5,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Previsão do Tempo</title>
+    <title>Weatherly - Previsão do Tempo</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- FUNDO ANIMADO -->
+    <div class="background">
+        <div class="cloud cloud-1">☁️</div>
+        <div class="cloud cloud-2">☁️</div>
+        <div class="cloud cloud-3">☁️</div>
+    </div>
+
+    <!-- CABEÇALHO -->
     <header>
-        <h1>Previsão do Tempo</h1>
 
-        <input type="text" id="cidade" placeholder="Digite uma cidade">
-        <button id="btnPesquisar">Pesquisar</button>
-    </header>
+        <div class="logo">
+            <span>☁️</span>
+            <h1>Weatherly</h1>
+        </div>
 
-    <main>
+        <p class="subtitulo">
+            Consulte a previsão do tempo em qualquer lugar
+        </p>
 
-        <section class="tempo-atual">
+        <div class="pesquisa">
 
-            <h2 id="nomeCidade">Digite uma cidade</h2>
+            <div class="input-container">
+                <span>📍</span>
 
-            <div class="temperatura">
-                <span id="iconeAtual">🌤️</span>
-                <strong id="temperaturaAtual">--°C</strong>
+                <input
+                    type="text"
+                    id="cidade"
+                    placeholder="cidade, estado ou país"
+                    autocomplete="off"
+                >
             </div>
 
-            <p id="descricaoAtual">Pesquise uma cidade para ver a previsão</p>
+            <button id="btnPesquisar">
+                <span>🔍</span>
+                Pesquisar
+            </button>
 
-            <p>
-                Máxima: <span id="maxima">--</span> |
-                Mínima: <span id="minima">--</span>
-            </p>
+        </div>
+
+        <div class="status" id="status">
+            Pronto para pesquisar
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+    <main>
+
+        <!-- INFORMAÇÕES DA CIDADE -->
+        <section class="localizacao">
+
+            <div>
+                <span class="pin">📍</span>
+
+                <div>
+                    <p>Previsão para</p>
+                    <h2 id="nomeCidade">Sua cidade</h2>
+                </div>
+            </div>
+
+            <div class="data-hora">
+                <strong id="horaAtual">00:00</strong>
+                <span id="dataAtual">Carregando...</span>
+            </div>
 
         </section>
 
 
+        <!-- CLIMA ATUAL -->
+        <section class="clima-principal">
+
+            <div class="clima-info">
+
+                <span class="badge">
+                    ● Agora
+                </span>
+
+                <h3 id="descricaoAtual">
+                    Pesquise uma cidade
+                </h3>
+
+                <div class="temperatura">
+                    <strong id="temperaturaAtual">--</strong>
+                    <span>°C</span>
+                </div>
+
+                <div class="temperaturas">
+
+                    <div>
+                        <span>↑</span>
+                        <p>Máxima</p>
+                        <strong id="maxima">--°</strong>
+                    </div>
+
+                    <div>
+                        <span>↓</span>
+                        <p>Mínima</p>
+                        <strong id="minima">--°</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="icone-clima">
+
+                <div class="circulo-clima">
+                    <span id="iconeAtual">🌤️</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INDICADORES -->
+        <section class="indicadores">
+
+            <div class="indicador">
+
+                <div class="indicador-icon">💧</div>
+
+                <div>
+                    <span>Umidade</span>
+                    <strong id="umidade">--%</strong>
+                </div>
+
+            </div>
+
+
+            <div class="indicador">
+
+                <div class="indicador-icon">💨</div>
+
+                <div>
+                    <span>Vento</span>
+                    <strong id="vento">-- km/h</strong>
+                </div>
+
+            </div>
+
+
+            <div class="indicador">
+
+                <div class="indicador-icon">🌡️</div>
+
+                <div>
+                    <span>Sensação</span>
+                    <strong id="sensacao">--°</strong>
+                </div>
+
+            </div>
+
+
+            <div class="indicador">
+
+                <div class="indicador-icon">☀️</div>
+
+                <div>
+                    <span>Índice UV</span>
+                    <strong id="uv">--</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREVISÃO -->
         <section class="previsao">
 
-            <h2>Previsão para os próximos dias</h2>
+            <div class="titulo-secao">
+
+                <div>
+                    <span>PREVISÃO</span>
+                    <h2>Próximos dias</h2>
+                </div>
+
+                <button id="btnHoje">
+                    Hoje
+                </button>
+
+            </div>
+
 
             <div class="dias" id="dias">
 
-                <!-- Os dias serão criados pelo JavaScript -->
+                <div class="dia carregando">
+                    <div class="skeleton"></div>
+                    <div class="skeleton pequeno"></div>
+                    <div class="skeleton medio"></div>
+                </div>
+
+                <div class="dia carregando">
+                    <div class="skeleton"></div>
+                    <div class="skeleton pequeno"></div>
+                    <div class="skeleton medio"></div>
+                </div>
+
+                <div class="dia carregando">
+                    <div class="skeleton"></div>
+                    <div class="skeleton pequeno"></div>
+                    <div class="skeleton medio"></div>
+                </div>
+
+                <div class="dia carregando">
+                    <div class="skeleton"></div>
+                    <div class="skeleton pequeno"></div>
+                    <div class="skeleton medio"></div>
+                </div>
+
+                <div class="dia carregando">
+                    <div class="skeleton"></div>
+                    <div class="skeleton pequeno"></div>
+                    <div class="skeleton medio"></div>
+                </div>
 
             </div>
 
@@ -54,12 +237,28 @@
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>Site de previsão do tempo</p>
+
+        <div class="footer-logo">
+            ☁️ Weatherly
+        </div>
+
+        <p>
+            Informações meteorológicas para facilitar o seu dia.
+        </p>
+
+        <span>
+            Desenvolvido com HTML, CSS e JavaScript
+        </span>
+
     </footer>
+
 
     <script src="script.js"></script>
 
 </body>
 
 </html>
+

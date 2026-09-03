@@ -27,7 +27,7 @@ require_once "funcoes.php";
 
         <?php
         criarPesquisa();
-        criarPrevisao();
+        criarPrevisao(criarCard("hoje", "", "12", "Ensolarado"));
         ?>
     </main>
     <?php

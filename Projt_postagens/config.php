@@ -17,7 +17,7 @@ $topo =    '<!DOCTYPE html>
             <img src="img/logo.png">
             <h1>'.$titulo.'</h1>
         </div>
-           '.criarMenu($_SESSION["logado"]).'
+           '.criarMenu(@$_SESSION["logado"]).'
     </header>';
     echo $topo;
     
@@ -47,7 +47,7 @@ function criarMenu($logado){
 
 
 $rodape = ' <footer class="dflex-center">
-    <p>&copy; 2024 Postagens. Todos os direitos reservados.</p>
+    <p>&copy; 2026 Postagens. Todos os direitos reservados.</p>
 </footer>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

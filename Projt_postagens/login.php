@@ -1,8 +1,8 @@
 <?php
+
 include 'config.php';
 
 criarTopo('IFES - Login');
-
 ?>
 <main>
    <div class="container">
@@ -37,7 +37,11 @@ criarTopo('IFES - Login');
             <button type="submit">
                 Logar
             </button>
-
+            <?php
+                if(isset($_SESSION['mensagem'])){
+                    echo $_SESSION['mensagem'];
+                }
+            ?>
         </form>
 
     </div>
@@ -46,4 +50,5 @@ criarTopo('IFES - Login');
 
 <?php
 echo $rodape;
+
 ?>

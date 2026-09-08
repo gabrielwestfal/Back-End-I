@@ -1,4 +1,5 @@
 <?php
+// @session_start();
 include 'config.php';
 
 $main = '    <main>
@@ -9,6 +10,9 @@ $main = '    <main>
 </main>';
 
 echo criarTopo('IFES - Projeto Postagens');
+
 echo $main;
+$logado = @$_SESSION["logado"];
+paginaRestrita($logado);
 echo $rodape;
 ?>

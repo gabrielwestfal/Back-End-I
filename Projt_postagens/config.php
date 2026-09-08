@@ -94,5 +94,17 @@ $rodape = ' <footer class="dflex-center">
     ';
     return $pesquisa;
 };
-   
+function paginaRestrita($logado, $pagina = "login.php", $mensagem = "Necessario fazer login para acessar essa pagina!"){
+    if($logado == 0){
+        header("Location: $pagina");
+        $_SESSION['mensagem'] = '<div class="mensagem">Necessario fazer login para acessar essa pagina!</div>';
+    }
+};
+function criaMensagem($mensagem, $tipo){
+    if($tipo == "sucesso"){
+        return '<div class="mensagem-sucesso">'.$mensagem.'</div>';
+    }else{
+        return '<div class="mensagem-erro">'.$mensagem.'</div>';
+    }
+}
 ?>

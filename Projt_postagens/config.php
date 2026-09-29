@@ -1,5 +1,6 @@
 <?php
 session_start();
+require ("conn.php");
 function criarTopo($titulo){
 
 $topo =    '<!DOCTYPE html>
@@ -106,5 +107,57 @@ function criaMensagem($mensagem, $tipo){
     }else{
         return '<div class="mensagem-erro">'.$mensagem.'</div>';
     }
+}
+function criarUsuario(){
+    
+$email = @$_POST['email'];
+$senha = @$_POST['senha'];
+
+$sql = "INSERT INTO usuarios (email, senha)VALUES ('$email','$senha')";
+
+if(mysqli_query($conn, $sql)){
+    $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Usuario inserido com sucesso</div>';
+    $_SESSION['logado'] = 1;
+    header("Location: index.php");
+}else{
+    $_SESSION['mensagem'] = '<div class="mensagem-erro">Erro ao inserir usuario: '. mysqli_error($conn) .'</div>';
+    $_SESSION['logado'] = 0;
+    header("Location: index.php");
+}
+
+mysqli_close($conn);
+
+}
+function criarFormularioCadastro(){
+    $formulario = '
+    <form class="formulario" action="inserir_usuario.php" method="POST">
+        <h1>Faça seu Cadastro</h1>
+        <p>Preencha os campos abaixo</p>
+        <div class="campo">
+            <label for="email">Email</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+                required
+            >
+        </div>
+        <div class="campo">
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+        </div>
+        <button type="submit">
+            Cadastrar
+        </button>
+    </form>
+    ';
+    return $formulario;
 }
 ?>

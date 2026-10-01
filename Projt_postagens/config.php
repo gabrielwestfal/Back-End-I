@@ -108,10 +108,10 @@ function criaMensagem($mensagem, $tipo){
         return '<div class="mensagem-erro">'.$mensagem.'</div>';
     }
 }
-function criarUsuario(){
+function criarUsuario($conn, $senha, $email){
     
-$email = @$_POST['email'];
-$senha = @$_POST['senha'];
+$senha = $_POST['senha'];
+$email = $_POST['email'];
 
 $sql = "INSERT INTO usuarios (email, senha)VALUES ('$email','$senha')";
 

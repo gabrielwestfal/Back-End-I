@@ -296,3 +296,76 @@ footer {
     color: #721c24;
     text-align: center;
 }  
+/* ===== Tabela de usuários ===== */
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabela th {
+    background: #E66610;
+    color: white;
+    text-align: left;
+    padding: 12px 16px;
+}
+
+.tabela td {
+    padding: 12px 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.tabela tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.tabela tbody tr:hover {
+    background: #fff3ea;
+}
+
+.tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Botões da tabela (anulam o button global) */
+.btn-acao {
+    width: auto;
+    padding: 6px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-acao.editar {
+    background: #E66610;
+}
+
+.btn-acao.editar:hover {
+    background: #d85d0b;
+}
+
+.btn-acao.excluir {
+    background: #c0392b;
+}
+
+.btn-acao.excluir:hover {
+    background: #a93226;
+}
+
+/* Tabela rolável no celular */
+main:has(.tabela) {
+    overflow-x: auto;
+}
+
+@media (max-width: 480px) {
+    .tabela th,
+    .tabela td {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}

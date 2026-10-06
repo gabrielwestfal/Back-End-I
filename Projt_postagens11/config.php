@@ -1,0 +1,163 @@
+<?php
+session_start();
+require ("conn.php");
+function criarTopo($titulo){
+
+$topo =    '<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Postagens - '.$titulo.'</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+       
+    <header>
+        <div class="dflex-center">
+            <img src="img/logo.png">
+            <h1>'.$titulo.'</h1>
+        </div>
+           '.criarMenu(@$_SESSION["logado"]).'
+    </header>';
+    echo $topo;
+    
+};
+function criarMenu($logado){
+            $menu = "";
+            if($logado == 1){
+                $menu = '<nav>
+                        '.criarLinkMenu("perfil.php", 'person-outline', "Perfil").'            
+                        '.criarLinkMenu("posts.php", 'add-outline', "Cadastrar Postagem").'    
+                        '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'
+                        '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
+                        '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'        
+                        </nav>';
+            }else{
+                $menu = '<nav>
+                '.criarLinkMenu("index.php", 'home-outline', "Início").'   
+                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'     
+                        '.criarLinkMenu("login.php", 'lock-closed-outline', "Acessar").'                        
+                        '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
+                        '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'  
+                        </nav>';
+            }
+           return $menu;
+}
+  
+
+
+$rodape = ' <footer class="dflex-center">
+    <p>&copy; 2026 Postagens. Todos os direitos reservados.</p>
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>    
+</body>
+</html>';
+?>
+<?php
+    function  linkAtivo($pagina){
+        $link = basename($_SERVER['PHP_SELF']);
+        $paginaAtiva = "";
+        if($link == $pagina){
+            $paginaAtiva = "ativo";
+        }else{
+            $paginaAtiva = "";
+        }
+        return $paginaAtiva;
+    };
+
+    function criarLinkMenu ($pagina,$icon,$nome){
+        $html = '<a class="btn '.linkAtivo($pagina).'" href="'.$pagina.'"><ion-icon name="'.$icon.'"></ion-icon>'.$nome.'</a>';
+
+        return $html;
+    };
+
+    function criarPesquisa($action, $titulo, $name){
+        $pesquisa = '
+        <main>
+          <form  class="formulario" action='.$action.' method="GET">
+            <h1>'.$titulo.'</h1>
+            <p>Faça sua pesquisa abaixo</p>
+                        <div class="campo">
+                            <input
+                                type="text"
+                                id="pesquisa"
+                                name="'.$name.'"
+                                placeholder="Digite a sua pesquisa"
+                                required
+                            >
+                            <button><ion-icon name="search-outline"></ion-icon> Buscar</button>
+                        </div> 
+            </form>
+        </main>
+    ';
+    return $pesquisa;
+};
+function paginaRestrita($logado, $pagina = "login.php", $mensagem = "Necessario fazer login para acessar essa pagina!"){
+    if($logado == 0){
+        header("Location: $pagina");
+        $_SESSION['mensagem'] = '<div class="mensagem">Necessario fazer login para acessar essa pagina!</div>';
+    }
+};
+function criaMensagem($mensagem, $tipo){
+    if($tipo == "sucesso"){
+        return '<div class="mensagem-sucesso">'.$mensagem.'</div>';
+    }else{
+        return '<div class="mensagem-erro">'.$mensagem.'</div>';
+    }
+}
+function criarUsuario($conn, $senha, $email){
+    
+$senha = $_POST['senha'];
+$email = $_POST['email'];
+
+$sql = "INSERT INTO usuarios (email, senha)VALUES ('$email','$senha')";
+
+if(mysqli_query($conn, $sql)){
+    $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Usuario inserido com sucesso</div>';
+    $_SESSION['logado'] = 1;
+    header("Location: index.php");
+}else{
+    $_SESSION['mensagem'] = '<div class="mensagem-erro">Erro ao inserir usuario: '. mysqli_error($conn) .'</div>';
+    $_SESSION['logado'] = 0;
+    header("Location: index.php");
+}
+
+mysqli_close($conn);
+
+}
+function criarFormularioCadastro(){
+    $formulario = '
+    <form class="formulario" action="inserir_usuario.php" method="POST">
+        <h1>Faça seu Cadastro</h1>
+        <p>Preencha os campos abaixo</p>
+        <div class="campo">
+            <label for="email">Email</label>
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+                required
+            >
+        </div>
+        <div class="campo">
+            <label for="senha">Senha</label>
+            <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+        </div>
+        <button type="submit">
+            Cadastrar
+        </button>
+    </form>
+    ';
+    return $formulario;
+}
+?>

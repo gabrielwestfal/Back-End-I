@@ -1,9 +1,14 @@
 <?php
 include("config.php");
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha'] ?? '';
+    if ($email !== '' && $senha !== '') {
+        criarUsuario($conn, $email, $senha); // redireciona e encerra
+    }
+}
+
 criarTopo('IFES - Cadastro de Usuário');
-$nome  = $_POST['nome'];
-$email = $_POST['email'];
-criarUsuario($conn, $nome, $email);
-echo criarFormularioCadastro();
+echo '<main>'.criarFormularioCadastro().'</main>';
 echo $rodape;

@@ -1,14 +1,13 @@
 <?php
 
 $servername = "localhost";
-$usarname = "root";
+$username = "root";
 $password = "";
 $dbname = "projetogames_2026";
 
-$conn = mysqli_connect($servername, $usarname, $password, $dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 if(!$conn){
-    die("falha na conexão: ". mysqli_connect_error());
+    die("Falha na conexão: ". mysqli_connect_error());
 }
-
-?>
+mysqli_set_charset($conn, "utf8mb4");

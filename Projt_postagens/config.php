@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require ("conn.php");
 function criarTopo($titulo){
 
@@ -22,7 +24,7 @@ $topo =    '<!DOCTYPE html>
     </header>';
     echo $topo;
     
-};
+}
 function criarMenu($logado){
             $menu = "";
             if($logado == 1){
@@ -66,7 +68,7 @@ $rodape = ' <footer class="dflex-center">
             $paginaAtiva = "";
         }
         return $paginaAtiva;
-    };
+    }
 
     function criarLinkMenu ($pagina,$icon,$nome){
         $html = '<a class="btn '.linkAtivo($pagina).'" href="'.$pagina.'"><ion-icon name="'.$icon.'"></ion-icon>'.$nome.'</a>';
@@ -77,7 +79,7 @@ $rodape = ' <footer class="dflex-center">
     function criarPesquisa($action, $titulo, $name){
         $pesquisa = '
         <main>
-          <form  class="formulario" action='.$action.' method="GET">
+          <form class="formulario" action="'.$action.'" method="GET">
             <h1>'.$titulo.'</h1>
             <p>Faça sua pesquisa abaixo</p>
                         <div class="campo">
@@ -94,13 +96,14 @@ $rodape = ' <footer class="dflex-center">
         </main>
     ';
     return $pesquisa;
-};
-function paginaRestrita($logado, $pagina = "login.php", $mensagem = "Necessario fazer login para acessar essa pagina!"){
-    if($logado == 0){
+}
+function paginaRestrita($logado, $pagina = "login.php", $mensagem = "Necessário fazer login para acessar essa página!"){
+    if(!$logado){
+        $_SESSION['mensagem'] = '<div class="mensagem-erro">'.$mensagem.'</div>';
         header("Location: $pagina");
-        $_SESSION['mensagem'] = '<div class="mensagem">Necessario fazer login para acessar essa pagina!</div>';
+        exit;
     }
-};
+}
 function criaMensagem($mensagem, $tipo){
     if($tipo == "sucesso"){
         return '<div class="mensagem-sucesso">'.$mensagem.'</div>';
@@ -108,25 +111,21 @@ function criaMensagem($mensagem, $tipo){
         return '<div class="mensagem-erro">'.$mensagem.'</div>';
     }
 }
-function criarUsuario($conn, $senha, $email){
-    
-$senha = $_POST['senha'];
-$email = $_POST['email'];
+function criarUsuario($conn, $email, $senha){
+    $hash = password_hash($senha, PASSWORD_DEFAULT);
+    $stmt = mysqli_prepare($conn, "INSERT INTO usuarios (email, senha) VALUES (?, ?)");
+    mysqli_stmt_bind_param($stmt, "ss", $email, $hash);
 
-$sql = "INSERT INTO usuarios (email, senha)VALUES ('$email','$senha')";
-
-if(mysqli_query($conn, $sql)){
-    $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Usuario inserido com sucesso</div>';
-    $_SESSION['logado'] = 1;
+    if(mysqli_stmt_execute($stmt)){
+        $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Usuário inserido com sucesso</div>';
+        $_SESSION['logado'] = 1;
+    }else{
+        $_SESSION['mensagem'] = '<div class="mensagem-erro">Erro ao inserir usuário: '.htmlspecialchars(mysqli_stmt_error($stmt)).'</div>';
+        $_SESSION['logado'] = 0;
+    }
+    mysqli_stmt_close($stmt);
     header("Location: index.php");
-}else{
-    $_SESSION['mensagem'] = '<div class="mensagem-erro">Erro ao inserir usuario: '. mysqli_error($conn) .'</div>';
-    $_SESSION['logado'] = 0;
-    header("Location: index.php");
-}
-
-mysqli_close($conn);
-
+    exit;
 }
 function criarFormularioCadastro(){
     $formulario = '
@@ -136,7 +135,7 @@ function criarFormularioCadastro(){
         <div class="campo">
             <label for="email">Email</label>
             <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 placeholder="Digite seu email"

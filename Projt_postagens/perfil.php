@@ -1,11 +1,7 @@
 <?php
 include 'config.php';
 
-$logado = @$_SESSION["logado"];
+paginaRestrita(@$_SESSION["logado"]);
 
-echo $logado;
-
-criarTopo($logado);
-criarMenu($logado);
+criarTopo('IFES - Perfil');
 echo $rodape;
-?>

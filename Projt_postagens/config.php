@@ -128,6 +128,7 @@ if(mysqli_query($conn, $sql)){
 mysqli_close($conn);
 
 }
+
 function criarFormularioCadastro(){
     $formulario = '
     <form class="formulario" action="inserir_usuario.php" method="POST">

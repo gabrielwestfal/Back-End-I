@@ -6,9 +6,9 @@ criarTopo('IFES - Login');
 <main>
    <div class="container">
 
-        <form class="formulario" action="inserir_usuario.php" method="POST">
+        <form class="formulario" action="login-acao.php" method="POST">
 
-            <h1>Faça seu Cadastro</h1>
+            <h1>Faça seu login</h1>
 
             <p>Preencha os campos abaixo</p>
             <div class="campo">
@@ -34,7 +34,7 @@ criarTopo('IFES - Login');
             </div>
            
             <button type="submit">
-                Cadastrar
+                Logar
             </button>
             <?php
                 if(isset($_SESSION['mensagem'])){

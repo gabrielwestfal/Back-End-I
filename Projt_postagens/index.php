@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+ $_SESSION['mensagem'] = '';
 criarTopo('IFES - Projeto Postagens');
 
 ?>

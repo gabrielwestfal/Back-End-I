@@ -1,19 +1,16 @@
 
 <?php
-session_start();
-
 include_once 'conn.php';
 include_once 'config-usuario.php';
 
-$nome = $_POST['nome'] ;
-$email = $_POST['email'] ;
-$senha = $_POST['senha'] ;
+
+$email = $_POST['email'] ?? '';
+$senha = $_POST['senha'] ?? '';
 
 $usuario = buscarLogin($email, $senha, $conn);
 
-if ($usuario != "") {
+if ($usuario != 1 && $usuario !='') {
     $_SESSION["logado"] = 1;
-    $_SESSION["nome"] = $nome;
     $_SESSION["id"] = $usuario['id'];
 
     header("Location: perfil.php");

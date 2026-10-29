@@ -28,7 +28,8 @@ function criarMenu($logado){
             if($logado == 1){
                 $menu = '<nav>
                         '.criarLinkMenu("perfil.php", 'person-outline', "Perfil").'            
-                        '.criarLinkMenu("posts.php", 'add-outline', "Cadastrar Postagem").'    
+                        '.criarLinkMenu("inserir-postagem.php", 'add-outline', "Cadastrar Postagem").'
+                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'    
                         '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'
                         '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
                         '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'        
@@ -37,7 +38,8 @@ function criarMenu($logado){
                 $menu = '<nav>
                 '.criarLinkMenu("index.php", 'home-outline', "Início").'   
                         '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'     
-                        '.criarLinkMenu("login.php", 'lock-closed-outline', "Acessar").'                        
+                        '.criarLinkMenu("login.php", 'lock-closed-outline', "Acessar").' 
+                        '.criarLinkMenu("cadastro.php", 'person-add-outline', "Cadastrar").'                       
                         '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
                         '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'  
                         </nav>';
@@ -131,6 +133,7 @@ mysqli_close($conn);
 
 function criarFormularioCadastro(){
     $formulario = '
+    <div class="container">
     <form class="formulario" action="inserir_usuario.php" method="POST">
         <h1>Faça seu Cadastro</h1>
         <p>Preencha os campos abaixo</p>
@@ -158,7 +161,42 @@ function criarFormularioCadastro(){
             Cadastrar
         </button>
     </form>
+    </div>
     ';
-    return $formulario;
+    echo $formulario;
+}
+function criarFormularioEdicao($id,$email,$senha){
+    $edicao = '
+        <div class="container">
+
+        <form class="formulario" action="editar-perfil.php" method="POST">
+
+            <h1>Edidar Perfil</h1>
+
+            <p>Preencha os campos abaixo</p>
+            <div class="campo">
+                <label for="login">email</label>
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu email"
+                    required
+                >
+            </div>
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+            </div>
+            <button type="submit">Logar</button>
+
+    ';
 }
 ?>

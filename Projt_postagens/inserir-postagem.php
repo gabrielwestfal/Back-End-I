@@ -6,8 +6,8 @@ if($_SESSION['logado'] != 1){
     header("Location: index.php");
     exit();
 }
-$id = $_SESSION['id'];
-function criarPostagem($conn, $titulo, $descricao, $id_usuario ){
+$id_usuario = $_SESSION['id'];
+function criarPostagem($conn, $titulo, $descricao, $id_usuario){
 
 $sql = 'INSERT INTO `postagens` (`id`, `titulo`, `descricao`, `dta`, `idUsuario`) 
 VALUES (NULL, "'.$titulo.'", "'.$descricao.'",NOW(),"'.$id_usuario.'")';
@@ -25,6 +25,4 @@ if(mysqli_query($conn, $sql)){
 mysqli_close($conn);
 
 }
-criarPostagem($conn, "bom de mais", "descricao da postagem", $id);
-
 ?>

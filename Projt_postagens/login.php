@@ -33,9 +33,14 @@ criarTopo('IFES - Login');
 
             </div>
            
-            <button type="submit">
-                Logar
-            </button>
+            
+            <button type="submit">Logar</button>
+
+            <p class="cadastro-link">
+                Não tem uma conta?
+                <a href="cadastro.php">Criar conta</a>
+            </p>
+
             <?php
                 if(isset($_SESSION['mensagem'])){
                     echo $_SESSION['mensagem'];

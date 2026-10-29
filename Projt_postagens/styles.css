@@ -70,6 +70,33 @@ nav {
     margin-top: 10px;
 }
 
+
+
+.cadastro-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.cadastro-link a,
+.cadastro-link a:link,
+.cadastro-link a:visited,
+.cadastro-link a:hover,
+.cadastro-link a:active,
+.cadastro-link a:focus {
+    color: #E66610 !important;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cadastro-link a:hover {
+    text-decoration: underline;
+}
+
+
+
 .btn {
     border: none;
     padding: 10px 20px;

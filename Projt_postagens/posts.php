@@ -12,7 +12,7 @@ $main = '    <main>
 echo criarTopo('IFES - Projeto Postagens');
 
 echo $main;
-$logado = @$_SESSION["logado"];
-paginaRestrita($logado);
+// $logado = @$_SESSION["logado"];
+// paginaRestrita($logado);
 echo $rodape;
 ?>

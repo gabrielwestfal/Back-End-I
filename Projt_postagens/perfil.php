@@ -3,9 +3,7 @@ include 'config.php';
 
 $logado = @$_SESSION["logado"];
 
-echo $logado;
-
-criarTopo($logado);
+criarTopo('IFES - Perfil');
 criarMenu($logado);
 echo $rodape;
 ?>

@@ -12,7 +12,7 @@ if($nome == 'gabriel' && $senha == "202cb962ac59075b964b07152d234b70"){
     echo "Login realizado com sucesso!";
     $_SESSION['logado'] = 1;
     $_SESSION['nome'] = $nome;
-    header("Location: index.php");
+    header("Location: perfil.php");
 }else {
     echo "Login ou senha incorretos";
     $_SESSION['logado'] = 0;

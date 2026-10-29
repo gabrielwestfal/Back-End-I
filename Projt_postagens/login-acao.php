@@ -16,7 +16,7 @@ if ($usuario != "") {
     $_SESSION["nome"] = $nome;
     $_SESSION["id"] = $usuario['id'];
 
-    header("Location: index.php");
+    header("Location: perfil.php");
     
 } else {
     $_SESSION["logado"] = 0;

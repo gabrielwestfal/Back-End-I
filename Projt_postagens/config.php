@@ -49,7 +49,7 @@ function criarMenu($logado){
   
 
 
-$rodape = ' <footer class="dflex-center">
+$rodape = '<footer class="dflex-center">
     <p>&copy; 2026 Postagens. Todos os direitos reservados.</p>
 </footer>
 
@@ -165,13 +165,13 @@ function criarFormularioCadastro(){
     ';
     echo $formulario;
 }
-function criarFormularioEdicao($id,$email,$senha){
-    $edicao = '
+function criarFormularioEdicao(){
+    $edicao = '<main>
         <div class="container">
 
         <form class="formulario" action="editar-perfil.php" method="POST">
 
-            <h1>Edidar Perfil</h1>
+            <h1>Editar Perfil</h1>
 
             <p>Preencha os campos abaixo</p>
             <div class="campo">
@@ -195,8 +195,10 @@ function criarFormularioEdicao($id,$email,$senha){
                 >
 
             </div>
-            <button type="submit">Logar</button>
-
+            <button type="submit">Editar Perfil</button>
+        </form>
+        </main>
     ';
+    echo $edicao;
 }
 ?>

@@ -95,7 +95,30 @@ nav {
     text-decoration: underline;
 }
 
+.acoes-perfil {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
 
+a.btn-acao {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 22px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+a.btn-acao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    color: white;
+}
 
 .btn {
     border: none;

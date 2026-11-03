@@ -1,28 +1,24 @@
 <?php
 include('config.php');
+include('config-usuario.php');
+include('config-postagem.php');
 include('conn.php');
 if($_SESSION['logado'] != 1){
     $_SESSION['mensagem'] = '<div class="mensagem-erro">Você precisa estar logado para criar uma postagem</div>';
     header("Location: index.php");
     exit();
 }
-$id_usuario = $_SESSION['id'];
-function criarPostagem($conn, $titulo, $descricao, $id_usuario){
+criarTopo('Criar Postagem');
+$titulo = @$_POST['titulo'];
+$descricao = @$_POST['descricao'];
+criarFormularioPostagem();
 
-$sql = 'INSERT INTO `postagens` (`id`, `titulo`, `descricao`, `dta`, `idUsuario`) 
-VALUES (NULL, "'.$titulo.'", "'.$descricao.'",NOW(),"'.$id_usuario.'")';
-
-if(mysqli_query($conn, $sql)){
-    $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Postagem Inserida com sucesso</div>';
-    $_SESSION['logado'] = 1;
-    header("Location: posts.php");
-}else{
-    $_SESSION['mensagem'] = '<div class="mensagem-erro">Erro ao inserir postagem: '. mysqli_error($conn) .'</div>';
-    $_SESSION['logado'] = 0;
-    header("Location: index.php");
+if(@$_GET['action'] == 'criar'){
+    criarPostagem($conn, $titulo, $descricao, $_SESSION['id']);
+    $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Postagem criada com sucesso</div>';
+    header('Location: inserir-postagem.php');
 }
+echo @$_SESSION['mensagem'];
 
-mysqli_close($conn);
-
-}
+echo $rodape;
 ?>

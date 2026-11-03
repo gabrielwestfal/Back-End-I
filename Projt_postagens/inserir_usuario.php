@@ -1,10 +1,11 @@
 <?php
 include("config.php");
+include("config-usuario.php");
 include('conn.php');
 
 criarTopo('IFES - Cadastro de Usuário');
-$nome  = $_POST['nome'];
+$senha = $_POST['senha'];
 $email = $_POST['email'];
-criarUsuario($conn, $nome, $email);
-echo criarFormularioCadastro();
+
+criarUsuario($conn, $senha, $email);
 echo $rodape;

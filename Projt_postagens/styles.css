@@ -102,7 +102,38 @@ nav {
     flex-wrap: wrap;
     margin-top: 20px;
 }
+/* Contentor geral do feed */
+.feed-postagens {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #E66610; /* Fundo cinza suave */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 680px;
+    margin: 20px auto;
+}
 
+/* O card de cada postagem dentro do feed */
+.card-postagem {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-postagem h2 {
+    font-size: 1.25rem;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.card-postagem p {
+    color: #475569;
+    line-height: 1.5;
+}
 a.btn-acao {
     display: inline-flex;
     align-items: center;
@@ -251,6 +282,7 @@ button:hover {
 ion-icon {
     margin-right: 5px;
 }
+
 
 footer {
     text-align: center;

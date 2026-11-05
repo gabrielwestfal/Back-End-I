@@ -18,7 +18,12 @@ if(@$_GET['action'] == 'criar'){
     $_SESSION['mensagem'] = '<div class="mensagem-sucesso">Postagem criada com sucesso</div>';
     header('Location: inserir-postagem.php');
 }
-echo @$_SESSION['mensagem'];
+$mensagem = $_SESSION['mensagem'] ?? '';
+
+if (isset($mensagem)) {
+    echo $mensagem;
+    unset($_SESSION['mensagem']);
+}
 
 echo $rodape;
 ?>

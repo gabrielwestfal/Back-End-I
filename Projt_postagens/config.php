@@ -9,7 +9,8 @@ $topo =    '<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site de Postagens - '.$titulo.'</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
        
@@ -29,7 +30,7 @@ function criarMenu($logado){
                 $menu = '<nav>
                         '.criarLinkMenu("perfil.php", 'person-outline', "Perfil").'            
                         '.criarLinkMenu("inserir-postagem.php", 'add-outline', "Cadastrar Postagem").'
-                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'    
+                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Minhas Postagens").'    
                         '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'
                         '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
                         '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'        
@@ -37,7 +38,7 @@ function criarMenu($logado){
             }else{
                 $menu = '<nav>
                 '.criarLinkMenu("index.php", 'home-outline', "Início").'   
-                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Postagens").'     
+                        '.criarLinkMenu("todos-posts.php", 'paper-plane-outline', "Postagens").'     
                         '.criarLinkMenu("login.php", 'lock-closed-outline', "Acessar").' 
                         '.criarLinkMenu("cadastro.php", 'person-add-outline', "Cadastrar").'                       
                         '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
@@ -49,7 +50,7 @@ function criarMenu($logado){
   
 
 
-$rodape = '<footer class="dflex-center">
+$rodape = '</main><footer class="dflex-center">
     <p>&copy; 2026 Postagens. Todos os direitos reservados.</p>
 </footer>
 
@@ -105,9 +106,9 @@ function paginaRestrita($logado, $pagina = "login.php", $mensagem = "Necessario 
 };
 function criaMensagem($mensagem, $tipo){
     if($tipo == "sucesso"){
-        return '<div class="mensagem-sucesso">'.$mensagem.'</div>';
+        $_SESSION['mensagem'] = '<div class="mensagem-sucesso">'.$mensagem.'</div>';
     }else{
-        return '<div class="mensagem-erro">'.$mensagem.'</div>';
+        $_SESSION['mensagem'] = '<div class="mensagem-erro">'.$mensagem.'</div>';
     }
 }
 

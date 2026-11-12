@@ -103,36 +103,57 @@ nav {
     margin-top: 20px;
 }
 /* Contentor geral do feed */
+/* Contêiner do feed */
 .feed-postagens {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #E66610; /* Fundo cinza suave */
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 24px;
     max-width: 680px;
     margin: 20px auto;
 }
 
-/* O card de cada postagem dentro do feed */
-.card-postagem {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+/* Card de cada postagem */
+.feed-postagens article {
+    background: #fff;
+    border-radius: 12px;
+    padding: 22px;
+    margin: 0;
+    border: 1px solid #e5e7eb;
+    border-left: 5px solid #E66610;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.card-postagem h2 {
-    font-size: 1.25rem;
+.feed-postagens article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.feed-postagens article h2 {
+    font-size: 1.3rem;
     color: #0f172a;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-.card-postagem p {
+.feed-postagens article p {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
     color: #475569;
     line-height: 1.5;
+    margin-bottom: 6px;
+}
+
+.feed-postagens article p i {
+    color: #E66610;
+    width: 16px;
+    text-align: center;
+}
+
+/* Data e autor mais discretos */
+.feed-postagens article p:nth-of-type(n+2) {
+    font-size: 0.85rem;
+    color: #94a3b8;
 }
 a.btn-acao {
     display: inline-flex;

@@ -64,4 +64,13 @@ function excluirUsuario($id, $conn) {
     }
     return mysqli_query($conn, $sql);
 }
+function buscarUsuario($id, $conn) {
+    $sql = "SELECT * FROM `usuarios` WHERE `id` = '$id'";
+    $resultado = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($resultado) > 0) {
+        return mysqli_fetch_assoc($resultado);
+    } else {
+        return null;
+    }
+}
 ?>

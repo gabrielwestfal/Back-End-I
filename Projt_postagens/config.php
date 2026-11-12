@@ -30,7 +30,8 @@ function criarMenu($logado){
                 $menu = '<nav>
                         '.criarLinkMenu("perfil.php", 'person-outline', "Perfil").'            
                         '.criarLinkMenu("inserir-postagem.php", 'add-outline', "Cadastrar Postagem").'
-                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Minhas Postagens").'    
+                        '.criarLinkMenu("posts.php", 'paper-plane-outline', "Minhas Postagens").' 
+                        '.criarLinkMenu("todos-posts.php", 'newspaper-outline', "Todas Postagens").'
                         '.criarLinkMenu("sair.php", 'exit-outline', "Sair").'
                         '.criarLinkMenu("google.php", 'logo-google', "Google").'                         
                         '.criarLinkMenu("pinterest.php", 'logo-pinterest', "Pinterest").'        
